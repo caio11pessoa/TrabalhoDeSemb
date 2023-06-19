@@ -1,13 +1,13 @@
 
 //By Caio
 // A estrutura Rectangle define um retângulo com quatro atributos: x e y representam as coordenadas do centro do retângulo, e width e height representam a largura e altura do retângulo
-struct Rectangle {
+typedef struct{
     float x, y;
     float width, height;
-    };
+    }Rectangle;
 
 
-int isCollision(Rectangle rect1, Rectangle rect2){
+int isColision(Rectangle rect1, Rectangle rect2){
 	//esse array é criado e preenchido com as coordenadas x e y dos dois retângulos
    float axes[] = { rect1.x, rect1.y, rect2.x, rect2.y };
 	//o array dimensions é criado e preenchido com as larguras e alturas dos dois retângulos.

@@ -21,17 +21,19 @@
 
 //By Caio
 //Essa biblioteca é necessária para poder adicionar dados diretamente na memória flash
-#include <avr/pgmspace.h>
+//#include <avr/pgmspace.h>
 //End by Caio
 
 // By Jamile
 //Arquivo que está escrito o algoritmo de colisão (SAF)
 #include "isColision.h"
+#include <stdio.h>
+#include <time.h>
 // End by Jamile
 
 //By Caio
 // Array que armazena os valores das dimensões e posições dos retângulos
-const PROGMEM int16_t valores[] = {
+const int valores[] = {
 1,1,2,4,
 4,6,2,4,
 
@@ -247,15 +249,14 @@ Rectangle rec2;
 
 // Função padrão do arduíno
 // Vamos utilizá-la para a execução do algoritmo, já que não precisamos do loop
-void setup() {
-
-// Início do serial
-Serial.begin(9600);
+void main() {
+    double time_spent = 0.0;
+    clock_t begin = clock();
 
     // looping que retira da memória os valores do array principal
       for(int i = 0 ; i < 68 ; i++){
           if(i %4 == 0 ){
-              Serial.println();
+              printf("\n");
          }
 
     // A colisão é verificada a cada 2 retângulos
@@ -264,7 +265,7 @@ Serial.begin(9600);
         for(long int k = i * 8; k < (i*8) +8 ; k++){
 
           int newIndice = k%8;
-          int displayInt = pgm_read_word_near(valores + k);
+          int displayInt = valores[k];
           if(newIndice == 0){
             rec1.x = displayInt;
           }
@@ -288,15 +289,17 @@ Serial.begin(9600);
           }
           if(newIndice == 7){
             rec2.height = displayInt;
-            int collision = isCollision(rec1, rec2);
-            Serial.print(collision);
-            Serial.print(", ");
+            int collision = isColision(rec1, rec2);
+            printf("%d, ", collision);
           }
         }
 
     }
+
+    clock_t end = clock();
+
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+
+    printf("\n\nThe elapsed time is %f seconds", time_spent);
 }
 
-void loop() {
-
-}
