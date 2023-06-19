@@ -11,7 +11,7 @@ int isColision(Rectangle rect1, Rectangle rect2){
 	//esse array é criado e preenchido com as coordenadas x e y dos dois retângulos
    //float axes[4] = { rect1.x, rect1.y, rect2.x, rect2.y };
 	//o array dimensions é criado e preenchido com as larguras e alturas dos dois retângulos.
-   float dimensions[4] = {rect1.width, rect1.height, rect2.width, rect2.height};
+   //float dimensions[4] = {rect1.width, rect1.height, rect2.width, rect2.height};
 	//os arrays "proj1" e 'proj2' armazenarão as projeções dos retângulos nos eixos x e y.
    float proj1[4], proj2[4];
 //End By Caio
