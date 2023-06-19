@@ -9,9 +9,9 @@ typedef struct{
 
 int isColision(Rectangle rect1, Rectangle rect2){
 	//esse array é criado e preenchido com as coordenadas x e y dos dois retângulos
-   float axes[] = { rect1.x, rect1.y, rect2.x, rect2.y };
+   //float axes[4] = { rect1.x, rect1.y, rect2.x, rect2.y };
 	//o array dimensions é criado e preenchido com as larguras e alturas dos dois retângulos.
-   float dimensions[] = {rect1.width, rect1.height, rect2.width, rect2.height};
+   float dimensions[4] = {rect1.width, rect1.height, rect2.width, rect2.height};
 	//os arrays "proj1" e 'proj2' armazenarão as projeções dos retângulos nos eixos x e y.
    float proj1[4], proj2[4];
 //End By Caio
@@ -19,12 +19,23 @@ int isColision(Rectangle rect1, Rectangle rect2){
 //By Jamile
 //o loop for percorre as dimensões x e y dos retângulos.
 //em cada iteração, as projeções máximas e mínimas dos retângulos são calculadas e armazenadas nos arrays proj1 e proj2, levando em consideração as coordenadas e dimensões dos retângulos.
-   for (int i = 0; i < 2; i++) {
+   /*for (int i = 0; i < 2; i++) {
         proj1[i] = axes[i] + (dimensions[i]/ 2.0f); // Projeções máximas
         proj1[i+2] = axes[i] - (dimensions[i]/ 2.0f);
         proj2[i] = axes[i+2] + (dimensions[i+2]/ 2.0f);
         proj2[i+2] = axes[i+2] - (dimensions[i+2]/ 2.0f);
-    }
+    }*/
+
+    proj1[0] = rect1.x + (rect1.width/ 2.0f); // Projeções máximas
+    proj1[2] = rect1.x - (rect1.width/ 2.0f);
+    proj2[0] = rect2.x + (rect2.width/ 2.0f);
+    proj2[2] = rect2.x - (rect2.width/ 2.0f);
+
+    proj1[1] = rect1.y + (rect1.height/ 2.0f); // Projeções máximas
+    proj1[3] = rect1.y - (rect1.height/ 2.0f);
+    proj2[1] = rect2.y + (rect2.height/ 2.0f);
+    proj2[3] = rect2.y - (rect2.height/ 2.0f);
+
 //a função verifica se há sobreposição entre os retângulos comparando as projeções nos eixos x e y
     if ((proj1[0] < proj2[2]|| proj2[0] < proj1[2]) || (proj1[1] < proj2[3] || proj2[1] < proj1[3]))
 //se houver sobreposição em qualquer um dos eixos, a função retorna 1

@@ -263,7 +263,6 @@ void main() {
     // Dois retângulos precisam de 8 valores do array principal
     // então a cada 8 iterações é retirado os valores da memória flash e testado se há colisão
         for(long int k = i * 8; k < (i*8) +8 ; k++){
-
           int newIndice = k%8;
           int displayInt = valores[k];
           if(newIndice == 0){
@@ -300,6 +299,6 @@ void main() {
 
     time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
 
-    printf("\n\nThe elapsed time is %f seconds", time_spent);
+    printf("\n\n tempo de execucao %f segundos", time_spent);
 }
 

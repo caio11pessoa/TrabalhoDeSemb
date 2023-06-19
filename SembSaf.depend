@@ -1,8 +1,12 @@
 # depslib dependency file v1.0
 1687194043 source:c:\users\caiop\desktop\sembsaf\iscolision.c
 
-1687193662 source:c:\users\caiop\desktop\sembsaf\main.c
-	"isColision.c"
+1687195450 source:c:\users\caiop\desktop\sembsaf\main.c
+	"isColision.h"
+	<stdio.h>
+	<time.h>
 
 1687193776 c:\users\caiop\desktop\sembsaf\iscolision.c
+
+1687194043 c:\users\caiop\desktop\sembsaf\iscolision.h
 
